@@ -1,0 +1,410 @@
+/* Reset básico */
+body,
+ul,
+li,
+a, button{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.navbar {
+  /* Color de fondo */
+  color: rgb(0, 0, 0); /* Color del texto */
+  padding: 1rem 2rem; /* Espaciado interno */
+  position: relative; /* Posicionamiento relativo */
+  z-index: 1000; /* Z-index para superposición */
+  border-radius: 60px; /* Bordes redondeados */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links li, .b_cerrar li {
+  display: inline-block; /* Muestra los elementos en línea */
+  margin-right: 20px; /* Espacio entre los elementos de la lista */
+}
+
+.nav-links li, .b_cerrar li {
+  list-style: none;
+}
+
+.nav-links a, .b_cerrar li  {
+  color: rgb(0, 0, 0);
+  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+  padding: 5px 0; /* Espaciado vertical */
+  text-decoration: none; /* Elimina el subrayado por defecto */
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover, .b_cerrar:hover {
+  color: #ffa500;
+}
+
+/* Estilo del botón de hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.3s;
+}
+
+/* Estilo para el subrayado */
+.nav-links a::after, .b_cerrar::after {
+  content: ""; /* Necesario para crear el pseudo-elemento */
+  position: absolute; /* Posicionamiento absoluto */
+  left: 0; /* Alinear a la izquierda */
+  bottom: 0; /* Alinear en la parte inferior */
+  width: 100%; /* Ancho completo */
+  height: 2px; /* Altura de la raya */
+  background: rgb(0, 0, 0); /* Color de la raya */
+  transform: scaleX(0); /* Inicialmente no visible */
+  transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el cursor */
+.nav-links a:hover::after, .b_cerrar:hover::after {
+  transform: scaleX(1); /* Muestra la raya al pasar el cursor */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 2rem 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    z-index: 999;
+  }
+
+  .nav-links.active, .b_cerrar {
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+/* Estilos generales para el carrusel */
+#carouselExample {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Asegura que las imágenes no salgan fuera del contenedor */
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease; /* Transición suave entre slides */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin deformarse */
+}
+
+/* Estilo de los indicadores (los puntos debajo del slider) */
+.carousel-indicators li {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Estilo general para las secciones de misión y visión */
+.mision,
+.vision,
+.porque_elegirnos{
+  opacity: 0;
+  transform: translateX(100px); /* Por defecto, movemos el contenido hacia la derecha */
+  transition: opacity 1s ease, transform 1s ease; /* Animación suave */
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.mision.show,
+.vision.show,
+.porque_elegirnos.show{
+  opacity: 1; /* Aparece al hacer scroll */
+  transform: translateX(100); /* Se mueve a su posición original */
+}
+
+.mision {
+  /* Misión entra desde la izquierda */
+  transform: translateX(-100px);
+}
+
+.vision {
+  /* Visión entra desde la derecha */
+  transform: translateX(100px);
+}
+
+.porque_elegirnos {
+  /* Por qué elegirnos entra desde la izquierda */
+  transform: translate(-100px);
+}
+
+.mision.show {
+  transform: translateX(0); /* Desliza hacia la izquierda */
+}
+
+.vision.show {
+  transform: translateX(0); /* Desliza hacia la derecha */
+}
+
+.porque_elegirnos {
+  transform: translateX(0);
+}
+
+/* Estilos de los títulos y párrafos */
+.mision h1,
+.vision h1,
+.porque_elegirnos h1,
+.fundamento h1 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.mision p,
+.vision p,
+.porque_elegirnos p,
+.fundamento p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  width: 60%;
+}
+
+/* Estilos de las imágenes */
+.img_mision,
+.img_vision,
+.porque_elegirnos,
+.fundamento {
+  width: 40%;
+}
+
+.img_mision img,
+.img_vision img,
+.porque_elegirnos img,
+.fundamento img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar las imágenes */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .mision,
+  .vision,
+  .porque_elegirnos{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mision p,
+  .vision p,
+  .porque_elegirnos p,
+  .fundamento p {
+    width: 90%;
+  }
+
+  .img_mision,
+  .img_vision,
+  .porque_elegirnos,
+  .fundamento {
+    width: 80%;
+  }
+}
+
+/* Estilos para el contenedor de la misión y visión */
+.mision,
+.vision,
+.porque_elegirnos,
+.fundamento {
+  margin-bottom: 40px; /* Espaciado entre secciones */
+  text-align: center; /* Centrar el texto */
+}
+
+/* Estilo para las imágenes */
+.img_mision img,
+.img_vision img {
+  width: 100%; /* Ancho completo */
+  max-width: 400px; /* Ancho máximo */
+  border-radius: 10px; /* Bordes redondeados */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el cursor */
+.img_mision img:hover,
+.img_vision img:hover {
+  transform: scale(1.1); /* Aumentar el tamaño */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra para resaltar la imagen */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul > li {
+  position: relative;
+  display: inline-block;
+}
+
+nav ul > li > a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+nav ul > li:hover > a {
+  background-color: transparent;
+  border-radius: 30px;
+}
+
+.dropdown {
+  display: none; /* Ocultar el menú desplegable por defecto */
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown li {
+  display: block;
+}
+
+.dropdown li a {
+  padding: 12px 16px;
+}
+
+nav ul > li:hover .dropdown {
+  display: block; /* Mostrar el menú desplegable al pasar el mouse */
+}
+
+/* General Footer Styles */
+#footer {
+  background-color: #777777; /* Cambia según tu diseño */
+  padding: 20px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.footer-menu-list {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las secciones bajen si no hay espacio */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.footer-menu {
+  flex: 1 1 20%; /* Hace que cada sección ocupe un 20% como mínimo */
+  text-align: left;
+}
+
+.footer-menu h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-menu .menu-item {
+  margin-bottom: 5px;
+}
+
+.footer-menu .menu-item a {
+  text-decoration: none;
+  color: #333; /* Cambia según tu diseño */
+  transition: color 0.3s ease;
+}
+
+.footer-menu .menu-item a:hover {
+  color: #007bff; /* Efecto hover */
+}
+
+.colored-image img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+hr {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}

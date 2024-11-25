@@ -1,0 +1,104 @@
+/* Reset general */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  background: #f5f5f5;
+}
+
+.contenedor-formularios {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Tabs */
+.contenedor-tabs {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  border-bottom: 2px solid #3498db;
+  color: #3498db;
+}
+
+/* Contenido del formulario */
+.contenedor-input {
+  margin-bottom: 15px;
+}
+
+.contenedor-input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.contenedor-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.button {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #2980b9;
+}
+
+.forgot {
+  text-align: right;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contenedor-formularios {
+      padding: 15px;
+  }
+
+  .contenedor-input input {
+      padding: 8px;
+      font-size: 13px;
+  }
+
+  .button {
+      font-size: 14px;
+  }
+
+  .tab {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
